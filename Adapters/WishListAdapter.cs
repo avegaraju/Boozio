@@ -29,7 +29,9 @@ namespace Shoolin.Appify.App.Adapters
             var bytes = GetImageBytes();
             var bitmap = Android.Graphics.BitmapFactory.DecodeByteArray(bytes, 0, bytes.Length);
             wishListViewHolder.WhiskeyImageView.SetImageBitmap(bitmap);
-            wishListViewHolder.WhiskeyTextView.Text = _wishListWhiskeys.ElementAt(position).Name;
+            wishListViewHolder.WhiskeyNameTextView.Text = _wishListWhiskeys.ElementAt(position).Name;
+            wishListViewHolder.DistilleryNameTextView.Text = _wishListWhiskeys.ElementAt(position).Distiller;
+            wishListViewHolder.AbvTextView.Text = $"{_wishListWhiskeys.ElementAt(position).Abv} % alcohol by volume";
         }
 
         private byte[] GetImageBytes()

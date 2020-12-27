@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 
 using Android.App;
@@ -16,7 +17,9 @@ namespace Shoolin.Appify.App.ViewHolders
     public class WishListViewHolder: RecyclerView.ViewHolder
     {
         public ImageView WhiskeyImageView { get; set; }
-        public TextView WhiskeyTextView { get; set; }
+        public TextView WhiskeyNameTextView { get; set; }
+        public TextView DistilleryNameTextView { get; set; }
+        public TextView AbvTextView { get; set; }
 
         public WishListViewHolder(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -25,7 +28,9 @@ namespace Shoolin.Appify.App.ViewHolders
         public WishListViewHolder(View itemView) : base(itemView)
         {
             WhiskeyImageView = itemView.FindViewById<ImageView>(Resource.Id.wishListWhiskeyImage);
-            WhiskeyTextView = itemView.FindViewById<TextView>(Resource.Id.wishListWhiskeyTextView);
+            WhiskeyNameTextView = itemView.FindViewById<TextView>(Resource.Id.wishListWhiskeyNameTextView);
+            DistilleryNameTextView = itemView.FindViewById<TextView>(Resource.Id.wishListDistilleryTextView);
+            AbvTextView = itemView.FindViewById<TextView>(Resource.Id.wishListAbvTextView);
         }
     }
 }
