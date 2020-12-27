@@ -97,9 +97,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="SimpleInjector">
       <Version>5.2.0</Version>
@@ -121,6 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\wishlist_viewholder.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\list_item_border.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
