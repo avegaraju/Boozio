@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30802.185
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoolin.Appify.App", "Shoolin.Appify.App.csproj", "{DF034C01-D28D-467F-800A-475557238D09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boozio.Appify.App", "Boozio.Appify.App.csproj", "{DF034C01-D28D-467F-800A-475557238D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoolin.Appify.Core", "Shoolin.Appify.Core\Shoolin.Appify.Core.csproj", "{E32921D2-249C-431D-AF31-ED31991167E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boozio.Appify.Core", "Boozio.Appify.Core\Boozio.Appify.Core.csproj", "{E32921D2-249C-431D-AF31-ED31991167E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoolin.Appify.Data", "Shoolin.Appify.Data\Shoolin.Appify.Data.csproj", "{7DAA8070-96C4-402D-A49C-3CBBFD41D0D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boozio.Appify.Data", "Boozio.Appify.Data\Boozio.Appify.Data.csproj", "{7DAA8070-96C4-402D-A49C-3CBBFD41D0D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

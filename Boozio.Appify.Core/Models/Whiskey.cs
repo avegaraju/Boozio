@@ -1,4 +1,4 @@
-﻿namespace Shoolin.Appify.Core.Models
+﻿namespace Boozio.Appify.Core.Models
 {
     public class Whiskey
     {

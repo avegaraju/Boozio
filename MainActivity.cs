@@ -1,16 +1,15 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Runtime;
+using Android.Support.V7.App;
 using Android.Support.V7.Widget;
-using Android.Widget;
-using Shoolin.Appify.App.Adapters;
-using Shoolin.Appify.Core.Ports;
-using Shoolin.Appify.Core.UseCases;
-using Shoolin.Appify.Data;
+using Boozio.Appify.App.Adapters;
+using Boozio.Appify.Core.Ports;
+using Boozio.Appify.Core.UseCases;
+using Boozio.Appify.Data;
 using SimpleInjector;
 
-namespace Shoolin.Appify.App
+namespace Boozio.Appify.App
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity

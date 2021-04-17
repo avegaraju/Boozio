@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Shoolin.Appify.Core.Models;
-using Shoolin.Appify.Core.Ports;
+using Boozio.Appify.Core.Models;
+using Boozio.Appify.Core.Ports;
 
-namespace Shoolin.Appify.Data
+namespace Boozio.Appify.Data
 {
     public class WhiskeyDataStore: IWhiskeyDataStore
     {

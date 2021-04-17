@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Shoolin.Appify.Core.Models;
-using Shoolin.Appify.Core.Ports;
+using Boozio.Appify.Core.Models;
+using Boozio.Appify.Core.Ports;
 
-namespace Shoolin.Appify.Core.UseCases
+namespace Boozio.Appify.Core.UseCases
 {
     public interface IWishListWhiskeyUseCase
     {

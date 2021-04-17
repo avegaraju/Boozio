@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Buffers.Text;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
-using Shoolin.Appify.App.ViewHolders;
-using Shoolin.Appify.Core.Models;
-using Shoolin.Appify.Core.UseCases;
+using Boozio.Appify.App.ViewHolders;
+using Boozio.Appify.Core.Models;
+using Boozio.Appify.Core.UseCases;
 
-namespace Shoolin.Appify.App.Adapters
+namespace Boozio.Appify.App.Adapters
 {
     public class WishListAdapter: RecyclerView.Adapter
     {

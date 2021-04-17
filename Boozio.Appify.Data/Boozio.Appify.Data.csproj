@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shoolin.Appify.Core\Shoolin.Appify.Core.csproj" />
+    <ProjectReference Include="..\Boozio.Appify.Core\Boozio.Appify.Core.csproj" />
   </ItemGroup>
 
 </Project>
