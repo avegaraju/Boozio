@@ -16,6 +16,7 @@ namespace Shoolin.Appify.App.Adapters
     public class WishListAdapter: RecyclerView.Adapter
     {
         private readonly IReadOnlyCollection<Whiskey> _wishListWhiskeys;
+        public event EventHandler<int> ItemClick;
 
         public WishListAdapter(IWishListWhiskeyUseCase wishListWhiskeyUseCase, ulong userId)
         {
@@ -50,8 +51,14 @@ namespace Shoolin.Appify.App.Adapters
             View itemView =
                 LayoutInflater.From(parent.Context).Inflate(Resource.Layout.wishlist_viewholder, parent, false);
 
-            WishListViewHolder wishListViewHolder = new WishListViewHolder(itemView);
+            WishListViewHolder wishListViewHolder = new WishListViewHolder(itemView, OnClick);
             return wishListViewHolder;
+        }
+
+        private void OnClick(int position)
+        {
+            var whiskeyId = _wishListWhiskeys.ElementAt(position).Id;
+            ItemClick?.Invoke(this, (int)whiskeyId);
         }
 
         public override int ItemCount => _wishListWhiskeys.Count;

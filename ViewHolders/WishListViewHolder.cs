@@ -25,12 +25,14 @@ namespace Shoolin.Appify.App.ViewHolders
         {
         }
 
-        public WishListViewHolder(View itemView) : base(itemView)
+        public WishListViewHolder(View itemView, Action<int> listener) : base(itemView)
         {
             WhiskeyImageView = itemView.FindViewById<ImageView>(Resource.Id.wishListWhiskeyImage);
             WhiskeyNameTextView = itemView.FindViewById<TextView>(Resource.Id.wishListWhiskeyNameTextView);
             DistilleryNameTextView = itemView.FindViewById<TextView>(Resource.Id.wishListDistilleryTextView);
             AbvTextView = itemView.FindViewById<TextView>(Resource.Id.wishListAbvTextView);
+
+            itemView.Click += (_, __) => listener(base.LayoutPosition);
         }
     }
 }
