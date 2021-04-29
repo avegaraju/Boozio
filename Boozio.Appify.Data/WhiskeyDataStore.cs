@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Boozio.Appify.Core.Models;
 using Boozio.Appify.Core.Ports;
+using Type = Boozio.Appify.Core.Models.Type;
 
 namespace Boozio.Appify.Data
 {
@@ -10,27 +13,31 @@ namespace Boozio.Appify.Data
     {
         private readonly IAmazonDynamoDB _client;
 
-        public WhiskeyDataStore(IAmazonDynamoDB client)
+        public WhiskeyDataStore(AmazonDynamoDBClient client)
         {
             _client = client;
         }
 
         public IReadOnlyCollection<Whiskey> GetWishListWhiskey(ulong userId)
         {
-            GetItemRequest request = new GetItemRequest
+            try
             {
-                AttributesToGet = new List<string>
+                GetItemRequest request = new GetItemRequest
                 {
-                    "SPIRITNAME",
-                    "DISTILLER"
-                },
-                TableName = "BoozlogStore"
-            };
+                    TableName = "BoozlogStore",
+                    Key = new Dictionary<string, AttributeValue>
+                    {
+                        {"PK", new AttributeValue("WKY#1")},
+                        {"SK", new AttributeValue("WKY#1")}
+                    }
+                };
 
-            var items = _client.GetItemAsync(request);
-
-            var name = items.Result.Item["SPIRITNAME"];
-            var distiller = items.Result.Item["DISTILLER"];
+                var items = _client.GetItemAsync(request).GetAwaiter().GetResult();
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }
 
             return new List<Whiskey>
             {
