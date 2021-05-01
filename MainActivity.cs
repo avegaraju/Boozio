@@ -8,6 +8,7 @@ using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
@@ -29,6 +30,7 @@ namespace Boozio.Appify.App
         private const string DevConfigurationFileName = "Boozio.Appify.App.Configuration.appsettings.dev.json";
         private const string ProductionConfigurationFileName = "Boozio.Appify.App.Configuration.appsettings.dev.json";
 
+        private Settings _settings;
         private RecyclerView _wishListRecyclerView;
         private RecyclerView.LayoutManager _wishListRecyclerViewLayoutManger;
         private WishListAdapter _wishListAdapter;
@@ -41,11 +43,16 @@ namespace Boozio.Appify.App
 
             InitializeDependencies();
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.activity_main);
+            SetContentView(Resource.Layout.login);
+            
 
             var googleLoginButton = FindViewById<Button>(Resource.Id.googleLoginButton);
             googleLoginButton.Click += GoogleLoginButton_Click;
+        }
+
+        private void ShowWishList()
+        {
+            SetContentView(Resource.Layout.activity_main);
 
             _wishListRecyclerViewLayoutManger = new LinearLayoutManager(this);
             _wishListAdapter = new WishListAdapter(_wishListWhiskeyUseCase, 1);
@@ -57,23 +64,56 @@ namespace Boozio.Appify.App
 
         private void GoogleLoginButton_Click(object sender, EventArgs e)
         {
+           var googleAuthHelper = new GoogleAuthHelper();
+           var authenticator = googleAuthHelper.Create(_settings);
+
+           authenticator.Completed += Authenticator_Completed;
+           authenticator.Error += Authenticator_Error;
+
+            var intent = authenticator.GetUI(this);
+            StartActivity(intent);
+        }
+
+        private void Authenticator_Error(object sender, Xamarin.Auth.AuthenticatorErrorEventArgs e)
+        {
             throw new NotImplementedException();
         }
 
+        private void Authenticator_Completed(object sender, Xamarin.Auth.AuthenticatorCompletedEventArgs e)
+        {
+            if (e.IsAuthenticated)
+            {
+                var token = new
+                {
+                    TokenType = e.Account.Properties["token_type"],
+                    AccessToken = e.Account.Properties["access_token"]
+                };
+
+                ShowWishList();
+
+            }
+            else
+            {
+                //do something
+            }
+        }
+
+
+
         private void InitializeDependencies()
         {
-            var settings = new Settings();
+            _settings = new Settings();
 
 #if DEBUG
-            settings = GetDevelopmentEnvironmentSettings();
+            _settings = GetDevelopmentEnvironmentSettings();
 #else
             settings = GetProductionEnvironmentSettings();
 #endif
 
 
             var credentials = new CognitoAWSCredentials(
-                settings.Aws.IdentityPoolId,
-                RegionEndpoint.GetBySystemName(settings.Aws.RegionConfig.SystemName)
+                _settings.Aws.IdentityPoolId,
+                RegionEndpoint.GetBySystemName(_settings.Aws.RegionConfig.SystemName)
             );
 
             AmazonDynamoDBConfig config = new AmazonDynamoDBConfig
