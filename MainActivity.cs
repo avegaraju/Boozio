@@ -107,7 +107,7 @@ namespace Boozio.Appify.App
 #if DEBUG
             _settings = GetDevelopmentEnvironmentSettings();
 #else
-            settings = GetProductionEnvironmentSettings();
+            _settings = GetProductionEnvironmentSettings();
 #endif
 
 
