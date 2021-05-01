@@ -21,13 +21,7 @@ namespace Boozio.Appify.App
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            Android.Net.Uri uri_android = Intent.Data;
-
-            var uri_netfx = new Uri(uri_android.ToString());
-
-            GoogleAuthHelper.Auth?.OnPageLoading(uri_netfx);
-
+            
             var intent = new Intent(this, typeof(MainActivity));
             intent.SetFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
             StartActivity(intent);
