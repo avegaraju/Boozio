@@ -12,6 +12,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
+using Android.Widget;
 using Boozio.Appify.App.Adapters;
 using Boozio.Appify.Core.Ports;
 using Boozio.Appify.Core.UseCases;
@@ -43,12 +44,20 @@ namespace Boozio.Appify.App
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
+            var googleLoginButton = FindViewById<Button>(Resource.Id.googleLoginButton);
+            googleLoginButton.Click += GoogleLoginButton_Click;
+
             _wishListRecyclerViewLayoutManger = new LinearLayoutManager(this);
             _wishListAdapter = new WishListAdapter(_wishListWhiskeyUseCase, 1);
 
             _wishListRecyclerView = FindViewById<RecyclerView>(Resource.Id.wishListRecyclerView);
             _wishListRecyclerView.SetLayoutManager(_wishListRecyclerViewLayoutManger);
             _wishListRecyclerView.SetAdapter(_wishListAdapter);
+        }
+
+        private void GoogleLoginButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void InitializeDependencies()
